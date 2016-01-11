@@ -18,6 +18,13 @@ echo "== Grase Package versions =="
 apt-cache policy 'grase-*' 'coova-chilli' 'freeradius' 'squid3' 'mysql-server' 'mariadb-server'
 echo "== Grase Repository Details =="
 cat /etc/apt/sources.list.d/grasehotspot.list
+echo "== Grase DNS Details =="
+cat /etc/dnsmasq.d/01-grasehotspot
+echo "== Chilli Radius local.conf (without macpasswd) =="
+cat /etc/chilli/local.conf |grep -v macpasswd
+echo "== Squid extra grase.d config =="
+ls -l /etc/squid3/grase.d/*
+cat /etc/squid3/grase.d/*
 echo "== Linux Distro and version =="
 lsb_release -a
 echo "== Network Information =="
