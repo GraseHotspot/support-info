@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version=2015101101
+version=2015101201
 
 echo "This script will collect information about your system that is useful for debugging the Grase Hotspot system. It will then give you the option of uploading the information to a pastebin for ease of sending the information to the mailing list"
 echo "Some of the information gather may be sensative depending on your environment. It may contain private network IP's, MAC addresses etc. Please review the data before uploading it"
@@ -32,7 +32,8 @@ echo "= Ifconfig ="
 /sbin/ifconfig -a
 echo "= /etc/network/interfaces ="
 cat /etc/network/interfaces
-
+echo "= Hard disk information ="
+df -h
 echo "= User information ="
 echo "$user@$host"
 
