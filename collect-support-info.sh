@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version=2015101101
+version=2016040401
 
 echo "This script will collect information about your system that is useful for debugging the Grase Hotspot system. It will then give you the option of uploading the information to a pastebin for ease of sending the information to the mailing list"
 echo "Some of the information gather may be sensative depending on your environment. It may contain private network IP's, MAC addresses etc. Please review the data before uploading it"
@@ -32,6 +32,17 @@ echo "= Ifconfig ="
 /sbin/ifconfig -a
 echo "= /etc/network/interfaces ="
 cat /etc/network/interfaces
+echo "= Network Manager ="
+nmcli -p connection show --active
+
+echo "= Status of services ="
+echo "== CoovaChilli =="
+systemctl status chilli || /usr/sbin/service chilli status
+systemctl status freeradius || /usr/sbin/service freeradius status
+systemctl status apache2 || /usr/sbin/service apache2 status
+systemctl status squid3 || /usr/sbin/service squid3 status
+systemctl status mysql || /usr/sbin/service mysql status
+systemctl status network-manager || /usr/sbin/service network-manager status
 
 echo "= User information ="
 echo "$user@$host"
