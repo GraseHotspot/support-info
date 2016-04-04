@@ -34,6 +34,8 @@ echo "= /etc/network/interfaces ="
 cat /etc/network/interfaces
 echo "= Network Manager ="
 nmcli -p connection show --active
+echo "= Hard disk information ="
+df -h
 
 echo "= Status of services ="
 echo "== CoovaChilli =="
@@ -43,7 +45,6 @@ systemctl status apache2 || /usr/sbin/service apache2 status
 systemctl status squid3 || /usr/sbin/service squid3 status
 systemctl status mysql || /usr/sbin/service mysql status
 systemctl status network-manager || /usr/sbin/service network-manager status
-
 echo "= User information ="
 echo "$user@$host"
 
