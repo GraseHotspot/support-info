@@ -34,6 +34,10 @@ echo "= /etc/network/interfaces ="
 cat /etc/network/interfaces
 echo "= Network Manager ="
 nmcli -p connection show --active
+echo "== Network Manager settings =="
+cat /etc/NetworkManager/NetworkManager.conf
+ls -l /etc/dnsmasq.d/network-manager
+cat /etc/dnsmasq.d/network-manager
 echo "= Hard disk information ="
 df -h
 
