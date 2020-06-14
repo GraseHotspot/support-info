@@ -1,9 +1,9 @@
 #!/bin/bash
 
-version=2016040401
+version=2020061401
 
-echo "This script will collect information about your system that is useful for debugging the Grase Hotspot system. It will then give you the option of uploading the information to a pastebin for ease of sending the information to the mailing list"
-echo "Some of the information gather may be sensative depending on your environment. It may contain private network IP's, MAC addresses etc. Please review the data before uploading it"
+echo "This script will collect information about your system that is useful for debugging the Grase Hotspot system. You will be required to copy and paste the output into an email that you send to the support list."
+echo "Some of the information gather may be sensative depending on your environment. It may contain private network IP's, MAC addresses etc. Please review the data before sending it"
 echo -n "Do you wish to continue?"
 read answer
 echo
@@ -56,12 +56,5 @@ echo "
 ==============================================================================="
 ) | tee -a $TMPFILE
 
-echo "
-Please review the information
-
-If you happy to submit this to the pastebin for ease of sending the the mailing list, press Enter, otherwise press Ctrl+C now"
-read answer
-echo
-echo "Uploading paste..."
-curl -d name="$user@$host" -d title="$host $(date -R)" --data-urlencode text@$TMPFILE https://paste.grasehotspot.org/api/create
-echo "Please send the above URL to the mailing list along with your support request"
+echo "Please send the above information to the mailing list along with your support request"
+echo "You can find it all stored in $TMPFILE for ease of sending it"
